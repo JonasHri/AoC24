@@ -2,10 +2,12 @@
 def mul(a, b):
     return a * b
 
-with open('input_03.txt', 'r') as f :
+with open('input.txt', 'r') as f :
     text = ''.join(f.readlines())
 
 sum = 0
+
+text.find()
 
 
 while len(text) > 7:
