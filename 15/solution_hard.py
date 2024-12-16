@@ -80,18 +80,6 @@ for instruction in moves:
                 x -= 1
                 warehouse[x, y] = "@"
 
-        # view = list(warehouse[: x + 1, y][::-1])
-        # view_to_box = view[: view.index("#") + 1]
-        # view_rest = view[view.index("#") + 1 :]
-
-        # if "." not in view_to_box:
-        #     continue
-
-        # view_to_box.remove(".")
-        # view_to_box = ["."] + view_to_box
-
-        # warehouse[: x + 1, y] = (view_to_box + view_rest)[::-1]
-
     elif instruction == "v":
         warehouse = warehouse[::-1]
         x, y = [a[0] for a in np.where(warehouse == "@")]
