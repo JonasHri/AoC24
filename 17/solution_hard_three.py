@@ -2,7 +2,7 @@
 import numpy as np
 from copy import deepcopy
 
-with open("input_hard.txt", "r") as f:
+with open("input.txt", "r") as f:
     data = f.readlines()
 
 A = int(data[0].strip().split(":")[1])
@@ -107,18 +107,18 @@ print(",".join(str(x) for x in out_str))
 
 
 # %%
-from tqdm import tqdm
 
-cp_bin = [["{:026b}".format(binary) for binary in position] for position in correct_part]
+cp_bin = [["{:0b}".format(binary) for binary in position] for position in correct_part]
 
 
-forward_check = 7
+forward_check = 2**7
+possible_solutions = []
 
 
 def find_correct(index, current_num):
 
     if index == len(correct_part):
-        print(current_num)
+        possible_solutions.append(current_num)
         return current_num
 
     current_relevant = current_num // ((2**3) ** index)
@@ -128,9 +128,6 @@ def find_correct(index, current_num):
 
         next_relevant = next_number // ((2**3) ** index)
 
-        if current_relevant == 0:
-            find_correct(index + 1, next_number + current_num)
-
         if current_relevant % forward_check == next_relevant % forward_check:
             find_correct(index + 1, next_number | current_num)
 
@@ -138,4 +135,23 @@ def find_correct(index, current_num):
 for num in correct_part[0]:
     find_correct(1, num)
 
-cp_bin
+possible_solutions
+# %%
+
+num = min(possible_solutions)
+print(num)
+print(instructions)
+
+A = num
+a_start = A
+B = 0
+C = 0
+pointer = 0
+out_str = []
+
+while 0 <= pointer < len(instructions) - 1:
+    # print(pointer, ops[instructions[pointer]].__name__, instructions[pointer + 1])
+    ops[instructions[pointer]](instructions[pointer + 1])
+    pointer += 2
+
+print(out_str)
