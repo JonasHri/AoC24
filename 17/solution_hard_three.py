@@ -2,7 +2,7 @@
 import numpy as np
 from copy import deepcopy
 
-with open("input.txt", "r") as f:
+with open("input_help.txt", "r") as f:
     data = f.readlines()
 
 A = int(data[0].strip().split(":")[1])
