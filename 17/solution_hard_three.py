@@ -143,6 +143,7 @@ print(num)
 print(instructions)
 
 A = num
+A = 16247842866690
 a_start = A
 B = 0
 C = 0
