@@ -39,6 +39,7 @@ while Q:
 DIST
 
 # %%
+from time import perf_counter
 
 X_tab = np.zeros_like(maze, dtype=int)
 for i in range(len(X_tab)):
@@ -56,11 +57,12 @@ def manh_dist(x, y):
 
 res = manh_dist(0, 0)
 
-max_dist = 20
+max_dist = 2
 X_pat, Y_pat = np.where(DIST < 1_000_000)
 
 total_possible = 0
 
+start = perf_counter()
 for x, y in zip(X_pat, Y_pat):
     cheat_dist = manh_dist(x, y)
     cheat_rad = cheat_dist <= max_dist
@@ -68,4 +70,4 @@ for x, y in zip(X_pat, Y_pat):
     possible_jumps = jumps[cheat_rad]
     total_possible += (possible_jumps <= -100).sum()
 
-total_possible
+total_possible, perf_counter() - start
