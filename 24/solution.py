@@ -2,7 +2,7 @@
 import numpy as np
 from copy import deepcopy
 
-with open("input.txt", "r") as f:
+with open("input_alt.txt", "r") as f:
     data = f.readlines()
 
 wire_gate_split = data.index("\n")

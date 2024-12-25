@@ -108,7 +108,7 @@ for _ in range(100):
     for k in res.keys():
         if res[k] != expected[k]:
             incorrect.add(k)
-print(incorrect)
+print(sorted(list(incorrect)))
 # %%
 
 solutions = []
